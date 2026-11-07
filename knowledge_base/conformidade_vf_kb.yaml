@@ -1,0 +1,23 @@
+spec_version: v1
+kind: knowledge_base
+name: compras_conformidade_kb
+description: |
+  Contém o histórico mensal de compras de 8 empresas corporativas (Mai–Out/2026),
+  incluindo valores totais mensais, localização de origem das compras, fornecedores
+  utilizados por mês e os 2 contatos responsáveis (Administrativo e Pessoa de
+  Confiança) por empresa. Utilizado pelo agente_conformidade_VF para verificar
+  os 3 critérios de conformidade: valor > 15% acima da média, fornecedor novo
+  e localização nova/ausente.
+documents:
+  - "knowledge_base/docs/empresas_corporativas.json"
+conversational_search_tool:
+  generation:
+    max_docs_passed_to_llm: 10
+    generated_response_length: Verbose
+  confidence_thresholds:
+    retrieval_confidence_threshold: Low
+    response_confidence_threshold: Low
+  query_rewrite:
+    enabled: true
+  citations:
+    citations_shown: -1
